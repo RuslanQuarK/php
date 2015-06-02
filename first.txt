@@ -1,1 +1,104 @@
 Hello world
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">  <html xmlns="http://www.w3.org/1999/xhtml"> 
+<html>
+
+        <head>
+        <meta http-equiv="Content-type" content "text/html;charset=windows-1251" />  
+            <link rel="stylesheet" type="text/css"  href="../../public/assets/css/menu.css">
+            <title>Контакт</title>
+        <?php include '../core/Connection.php' ?>
+        </head>
+        <body background="../../public/assets/img/24.jpg">
+        <div id="nav">
+            <ul class="select">
+                <li id='li6'  onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="#"><b>Главная</b></a></li>
+                <li id='li7'  onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="photoalbom.php"><b>Фотоальбом</b></a></li>
+                <li id='li3'  onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="about_me.html"><b>Обо мне </b></a></li>
+                <li id='li4'  onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="kontakt.php" ><b>Контакт</b></a></li>
+                <li id='li5'  onmouseout="mOut(id)" onmouseover="mOn(id)"> <a href="stud.html"><b>Тест</b></a></li>
+                <li id='li5' onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="guest_book.php"><b>Гостевая книга</b></a></li>
+                <li id='li5' onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="blog.php"><b>Блог</b></a></li>
+                <li id='li5' onmouseout="mOut(id)" onmouseover="mOn(id)"><a href="blog_edit.php"><b>Редактировать блог</b></a></li>
+
+                </li>
+            </ul>
+
+            <ul class="select"> <!-- <<<== активное меню -->
+                <li><a href="my_interesting.php"><b>Мои интересы</b></a>
+
+<ul class="sub"> <!-- <<<== активное подменю меню -->
+    <li><a href="my_interesting.html#hobby">Мое хобби</a></li>
+    <li><a href="my_interesting.html#books">Мои любимые книги</a></li>
+    <li><a href="my_interesting.html#music">Моя любимая музыка</a></li>
+    <li><a href="my_interesting.html#films">Мои любимые фильмы</a></li>
+</ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clearer"></div>
+        <div id="content">
+            <table>
+                <form action = "" method = "post" name="from_test">
+                    Ваше ФИО:</br>
+                    <input type="text" name="fio" size="20"></br>
+                    <p><align="left" style="margin-left:35px">2+4=
+                        <tr>
+                            <td><input type="checkbox" name="an" value="yes">6</br></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="an" value="5">5</br></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="an" value="4">4</br></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Отправить" name="from_t"></td>
+                        </tr>
+                </form>
+            </table>
+            <?php
+            if (isset($_POST['from_t'])) {
+                $fio = $_POST['fio'];
+                $data = date('y,m,d');
+                $answer = '';
+                $corect = '';
+                if (!empty($_POST['an'])) {
+                    if ($_POST['an'] == 'yes') {
+                        $answer = 6;
+                        $correct = 'правильно';
+                        $query = "INSERT INTO answers VALUES (null, '$data', '$fio', '$answer','$correct')";
+                        if (mysql_query($query)) {
+                            echo 'Тест успешно пройден!<br> Данные были добавлены в БД!';
+                        } else {
+                            echo "Ошибка базы данных. MySQL пишет:", mysql_error();
+                        }
+                    } else if ($_POST['an'] == '5') {
+                        $answer = 5;
+                        $correct = 'неправильно';
+                        $query = "INSERT INTO answers VALUES (null, '$data', '$fio', '$answer','$correct')";
+                        if (mysql_query($query)) {
+                            echo 'Тест успешно пройден!<br> Данные были добавлены в БД!';
+                        } else {
+                            echo "Ошибка базы данных. MySQL пишет:", mysql_error();
+                        }
+                    } else if ($_POST['an'] == '4') {
+                        $answer = 4;
+                        $correct = 'неправильно';
+                        $query = "INSERT INTO answers VALUES (null, '$data', '$fio', '$answer','$correct')";
+                        if (mysql_query($query)) {
+                            echo 'Тест успешно пройден!<br> Данные были добавлены в БД!';
+                        } else {
+                            echo "Ошибка базы данных. MySQL пишет:", mysql_error();
+                        }
+                    }
+                }
+            }
+            ?>
+        </div>
+        </body>
+</html> 
