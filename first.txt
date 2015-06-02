@@ -1,6 +1,7 @@
 Hello world
 
 
+<<<<<<< HEAD
 
 
 
@@ -102,3 +103,11 @@ Hello world
         </div>
         </body>
 </html> 
+=======
+qwdqe
+q
+eqeqweqw
+
+qwe
+
+>>>>>>> 6172e7e130b609d9e5f00a00948b439d28ccf711
